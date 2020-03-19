@@ -21,7 +21,7 @@ app.listen(port, () => {
 });
 
 // Run the job every hour
-const interval_time = 1000 * 60 * 1;
+const interval_time = 1000 * 60 * 60;
 
 setInterval(() => {
   runJob();
