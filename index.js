@@ -16,7 +16,11 @@ const { aggregate } = require("./lib/aggregate.js");
 
 const app = express();
 const port = process.env.PORT || 2083;
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://scraper-bot-jy.herokuapp.com/aggregate"
+  })
+);
 
 // Use the PORT variable provided OR use the declared port of :2093
 app.listen(port, () => {
