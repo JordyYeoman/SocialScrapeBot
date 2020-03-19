@@ -5,11 +5,13 @@ const {
   getInstagramCount,
   getTwitterCount,
   getYoutubeCount,
-  runJob
+  runJob,
+  db
 } = require("./lib/scraper");
 //import "./lib/cron";
+// const db = require("./lib/aggregate");
 //import db from "./lib/db";
-//import aggregate from "./lib/aggregate.js";
+const { aggregate } = require("./lib/aggregate.js");
 
 const app = express();
 const port = process.env.PORT || 2083;
@@ -21,7 +23,7 @@ app.listen(port, () => {
 });
 
 // Run the job every hour
-const interval_time = 1000 * 60 * 60;
+const interval_time = 1000 * 30 * 1;
 
 setInterval(() => {
   runJob();
@@ -37,14 +39,14 @@ app.get("/scrape", async (req, res, next) => {
   res.json({ iCount, tCount, yCount });
 });
 
-// app.get("/aggregate", async (req, res, next) => {
-//   // Get the scrape Data
-//   const { twitter, instagram, youtube } = db.value();
-//   // Aggregate these values
-//   res.json({
-//     twitter: aggregate(twitter),
-//     instagram: aggregate(instagram),
-//     youtube: aggregate(youtube)
-//   });
-//   // Respond with JSON
-// });
+app.get("/aggregate", async (req, res, next) => {
+  // Get the scrape Data
+  const { twitter, instagram, youtube } = db.value();
+  // Aggregate these values
+  res.json({
+    twitter: aggregate(twitter),
+    instagram: aggregate(instagram),
+    youtube: aggregate(youtube)
+  });
+  // Respond with JSON
+});
