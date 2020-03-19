@@ -6,7 +6,8 @@ const {
   getTwitterCount,
   getYoutubeCount,
   runJob,
-  db
+  db,
+  waker
 } = require("./lib/scraper");
 //import "./lib/cron";
 // const db = require("./lib/aggregate");
@@ -24,6 +25,12 @@ app.listen(port, () => {
 
 // Run the job every hour
 const interval_time = 1000 * 60 * 5;
+
+const interval_time2 = 1000 * 60 * 25;
+
+setInterval(() => {
+  waker();
+}, interval_time2);
 
 setInterval(() => {
   runJob();
