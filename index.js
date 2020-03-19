@@ -18,7 +18,7 @@ const app = express();
 const port = process.env.PORT || 2083;
 app.use(
   cors({
-    origin: "https://scraper-bot-jy.herokuapp.com/aggregate"
+    origin: "https://build-lac-eight.now.sh/"
   })
 );
 
