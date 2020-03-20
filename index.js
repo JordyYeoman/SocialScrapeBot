@@ -12,7 +12,7 @@ const {
 //import "./lib/cron";
 // const db = require("./lib/aggregate");
 //import db from "./lib/db";
-const { aggregate } = require("./lib/aggregate.js");
+//const { aggregate } = require("./lib/aggregate.js");
 
 const app = express();
 const port = process.env.PORT || 2083;
@@ -56,9 +56,9 @@ app.get("/aggregate", async (req, res, next) => {
   const { twitter, instagram, youtube } = db.value();
   // Aggregate these values
   res.json({
-    twitter: aggregate(twitter),
-    instagram: aggregate(instagram),
-    youtube: aggregate(youtube)
+    twitter: twitter,
+    instagram: instagram,
+    youtube: youtube
   });
   // Respond with JSON
 });
