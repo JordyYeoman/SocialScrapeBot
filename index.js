@@ -33,6 +33,7 @@ const interval_time = 1000 * 60 * 60;
 const interval_time2 = 1000 * 60 * 25;
 
 setInterval(() => {
+  console.log("Wake up...Neo");
   waker("https://scraper-bot-jy.herokuapp.com/aggregate");
 }, interval_time2);
 
